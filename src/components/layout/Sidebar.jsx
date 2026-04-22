@@ -25,7 +25,7 @@ const navigation = [
   { name: 'Blog', href: '/blog', icon: NewspaperIcon },
   { name: 'Team', href: '/team', icon: UsersIcon },
   { name: 'Initiatives', href: '/initiatives', icon: HeartIcon },
-  { name: 'Contacts', href: '/contacts', icon: EnvelopeIcon },
+  { name: 'Registrations', href: '/registrations', icon: EnvelopeIcon },
   { name: 'Quotes', href: '/quotes', icon: CurrencyDollarIcon },
   { name: 'Newsletter', href: '/newsletter', icon: MegaphoneIcon },
   { name: 'Careers', href: '/careers', icon: UserGroupIcon },

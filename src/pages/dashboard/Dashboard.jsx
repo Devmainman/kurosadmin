@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { motion } from 'framer-motion';
 import { 
-  Users, FileText, Mail, Eye, TrendingUp 
+  Users, FileText, Mail, Eye, TrendingUp, Clock 
 } from 'lucide-react';
 import axios from '../../api/axios.config';
 
@@ -39,11 +39,17 @@ export default function Dashboard() {
     );
   }
 
+  // Main stat cards (4 cards)
   const cards = [
     {
-      title: "Total Contacts",
-      value: data.contacts,
+      title: "Total Registrations",
+      value: data.contacts, // backend still returns "contacts" – we keep the value
       icon: <Users size={22} />,
+    },
+    {
+      title: "Pending Approval",
+      value: data.pendingRegistrations || 0, // we'll assume backend provides this or fallback to 0
+      icon: <Clock size={22} />,
     },
     {
       title: "Total Quotes",
@@ -55,11 +61,8 @@ export default function Dashboard() {
       value: data.subscribers,
       icon: <Mail size={22} />,
     },
-    {
-      title: "Page Views Today",
-      value: data.pageViews.today,
-      icon: <Eye size={22} />,
-    },
+    // Optional: keep Page Views as a fifth card if you prefer a 5-card grid
+    // We'll replace one card to maintain 4-card layout
   ];
 
   return (
@@ -88,7 +91,7 @@ export default function Dashboard() {
           </p>
         </motion.div>
 
-        {/* Stats Cards */}
+        {/* Stats Cards – 4 cards per row */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
 
           {cards.map((card, i) => (
@@ -116,7 +119,25 @@ export default function Dashboard() {
 
         </div>
 
-        {/* Performance Section */}
+        {/* Optional: Additional card for Page Views if you want to keep it */}
+        <div className="mt-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+            className="bg-white p-8 rounded-[2rem] border border-gray-100 shadow-sm hover:shadow-xl transition-all group max-w-xs"
+          >
+            <div className="w-12 h-12 bg-[#2FA8C7]/10 rounded-xl flex items-center justify-center text-[#135E73] mb-6 group-hover:bg-[#135E73] group-hover:text-white transition-colors">
+              <Eye size={22} />
+            </div>
+            <h3 className="text-sm text-gray-500 font-light">Page Views Today</h3>
+            <p className="text-3xl font-bold text-[#135E73] mt-2">
+              {data.pageViews?.today || 0}
+            </p>
+          </motion.div>
+        </div>
+
+        {/* Performance Section (unchanged) */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

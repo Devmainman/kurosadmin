@@ -41,8 +41,8 @@ import InitiativeForm from './pages/initiatives/InitiativeForm';
 import InitiativeDetail from './pages/initiatives/InitiativeDetail';
 
 // Contacts
-import Contacts from './pages/contacts/Contacts';
-import ContactDetail from './pages/contacts/ContactDetail';
+import Registrations from './pages/registrations/Registrations';
+import RegistrationDetail from './pages/registrations/RegistrationDetail';
 
 // Quotes
 import Quotes from './pages/quotes/Quotes';
@@ -142,8 +142,8 @@ function App() {
               <Route path="initiatives/:id/edit" element={<InitiativeForm />} />
               
               {/* Contacts */}
-              <Route path="contacts" element={<Contacts />} />
-              <Route path="contacts/:id" element={<ContactDetail />} />
+              <Route path="registrations" element={<Registrations />} />
+              <Route path="registrations/:id" element={<RegistrationDetail />} />
               
               {/* Quotes */}
               <Route path="quotes" element={<Quotes />} />
